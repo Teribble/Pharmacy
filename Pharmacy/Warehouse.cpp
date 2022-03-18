@@ -1,4 +1,4 @@
-#include "Warehouse.h"
+ï»¿#include "Warehouse.h"
 
 Warehouse::Warehouse()
 {
@@ -62,11 +62,11 @@ void Warehouse::deleteProduct( const int position )
 	}
 	else if(this->counter == 0)
 	{
-		std::cout << "Ñïèñîê ïóñò\n";
+		std::cout << "Ð¡Ð¿Ð¸ÑÐ¾Ðº Ð¿ÑƒÑÑ‚\n";
 	}
 	else
 	{
-		std::cout << "Íåêîððåêòíûé ââîä\n";
+		std::cout << "ÐÐµÐºÐ¾Ñ€Ñ€ÐµÐºÑ‚Ð½Ñ‹Ð¹ Ð²Ð²Ð¾Ð´\n";
 	}
 }
 
@@ -74,11 +74,11 @@ void Warehouse::changeProduct( const int position )
 {
 	system( "cls" );
 	std::cout <<
-		"1: Èçìåíèòü èìÿ\n" <<
-		"2: Èçìåíèòü ôîðìó âûïóñêà\n" <<
-		"3: Èçìåíèòü êîìïàíèþ\n" <<
-		"4: Èçìåíèòü öåíó\n" <<
-		"5: Èçìåíèòü êîë-âî òîâàðà íà ñêëàäå\n" << std::endl;
+		"1: Ð˜Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ð¸Ð¼Ñ\n" <<
+		"2: Ð˜Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ñ„Ð¾Ñ€Ð¼Ñƒ Ð²Ñ‹Ð¿ÑƒÑÐºÐ°\n" <<
+		"3: Ð˜Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ ÐºÐ¾Ð¼Ð¿Ð°Ð½Ð¸ÑŽ\n" <<
+		"4: Ð˜Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ñ†ÐµÐ½Ñƒ\n" <<
+		"5: Ð˜Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ ÐºÐ¾Ð»-Ð²Ð¾ Ñ‚Ð¾Ð²Ð°Ñ€Ð° Ð½Ð° ÑÐºÐ»Ð°Ð´Ðµ\n" << std::endl;
 	std::string buffer;
 	float price;
 	int amount;
@@ -87,27 +87,27 @@ void Warehouse::changeProduct( const int position )
 	switch(choice)
 	{
 		case one:
-			std::cout << "Ââåäèòå èìÿ: ";
+			std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¸Ð¼Ñ: ";
 			std::cin >> buffer;
 			this->list[ position ].setName( buffer );
 			break;
 		case two:
-			std::cout << "Ââåäèòå ôîðìó âûïóñêà: ";
+			std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ„Ð¾Ñ€Ð¼Ñƒ Ð²Ñ‹Ð¿ÑƒÑÐºÐ°: ";
 			std::cin >> buffer;
 			this->list[ position ].setForm( buffer );
 			break;
 		case three:
-			std::cout << "Ââåäèòå íàçâàíèå êîìïàíèè: ";
+			std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ ÐºÐ¾Ð¼Ð¿Ð°Ð½Ð¸Ð¸: ";
 			std::cin >> buffer;
 			this->list[ position ].setCompany( buffer );
 			break;
 		case fore:
-			std::cout << "Ââåäèòå öåíó: ";
+			std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ†ÐµÐ½Ñƒ: ";
 			std::cin >> price;
 			this->list[ position ].setPrice( price );
 			break;
 		case five:
-			std::cout << "Ââåäèòå êîë-âî òîâàðà íà ñêëàäå: ";
+			std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ¾Ð»-Ð²Ð¾ Ñ‚Ð¾Ð²Ð°Ñ€Ð° Ð½Ð° ÑÐºÐ»Ð°Ð´Ðµ: ";
 			std::cin >> amount;
 			this->list[ position ].setAmount( amount );
 			break;
@@ -131,7 +131,7 @@ void Warehouse::print()
 	}
 	else
 	{
-		std::cout << "Ñïèñîê ïóñò\n";
+		std::cout << "Ð¡Ð¿Ð¸ÑÐ¾Ðº Ð¿ÑƒÑÑ‚\n";
 	}
 
 }

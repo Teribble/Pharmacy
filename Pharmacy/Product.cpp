@@ -1,10 +1,10 @@
-#include "Product.h"
+п»ї#include "Product.h"
 
 Product::Product()
 {
-	this->name = "не указано наименование";
-	this->form = "не указана форма выпуска";
-	this->company = "не указана компания";
+	this->name = "РЅРµ СѓРєР°Р·Р°РЅРѕ РЅР°РёРјРµРЅРѕРІР°РЅРёРµ";
+	this->form = "РЅРµ СѓРєР°Р·Р°РЅР° С„РѕСЂРјР° РІС‹РїСѓСЃРєР°";
+	this->company = "РЅРµ СѓРєР°Р·Р°РЅР° РєРѕРјРїР°РЅРёСЏ";
 	this->price = 0;
 	this->amount = 0;
 }
