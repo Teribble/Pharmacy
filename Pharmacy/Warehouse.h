@@ -2,13 +2,15 @@
 #include "Product.h"
 #include <conio.h>
 
+#pragma region define
 #define one 49
 #define two 50
 #define three 51
 #define fore 52
 #define five 53
-
 #define TEN 10
+#pragma endregion define
+
 class Warehouse
 {
 public:
