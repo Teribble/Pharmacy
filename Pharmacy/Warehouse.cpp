@@ -70,6 +70,50 @@ void Warehouse::deleteProduct( const int position )
 	}
 }
 
+void Warehouse::changeProduct( const int position )
+{
+	system( "cls" );
+	std::cout <<
+		"1: »зменить им€\n" <<
+		"2: »зменить форму выпуска\n" <<
+		"3: »зменить компанию\n" <<
+		"4: »зменить цену\n" <<
+		"5: »зменить кол-во товара на складе\n" << std::endl;
+	std::string buffer;
+	float price;
+	int amount;
+	int choice;
+	choice = _getch( );
+	switch(choice)
+	{
+		case one:
+			std::cout << "¬ведите им€: ";
+			std::cin >> buffer;
+			this->list[ position ].setName( buffer );
+			break;
+		case two:
+			std::cout << "¬ведите форму выпуска: ";
+			std::cin >> buffer;
+			this->list[ position ].setForm( buffer );
+			break;
+		case three:
+			std::cout << "¬ведите название компании: ";
+			std::cin >> buffer;
+			this->list[ position ].setCompany( buffer );
+			break;
+		case fore:
+			std::cout << "¬ведите цену: ";
+			std::cin >> price;
+			this->list[ position ].setPrice( price );
+			break;
+		case five:
+			std::cout << "¬ведите кол-во товара на складе: ";
+			std::cin >> amount;
+			this->list[ position ].setAmount( amount );
+			break;
+	}
+}
+
 int Warehouse::getCounter() const
 {
 	return this->counter;

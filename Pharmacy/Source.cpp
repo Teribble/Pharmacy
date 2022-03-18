@@ -1,9 +1,13 @@
 #include <iostream>
 #include "Product.h"
 #include "Warehouse.h"
+#include <Windows.h>
+
+
 int main()
 {
-	setlocale( 0 , "rus" );
+	SetConsoleCP( 1251 );
+	SetConsoleOutputCP( 1251 );
 	Product a , b,c;
 	a.setName( "sss" );
 	a.setForm( "aa" );
@@ -20,10 +24,10 @@ int main()
 	g.addNewProduct( a );
 	g.addNewProduct( c );
 	g.print();
-	g.deleteProduct( 2 );
+	g.changeProduct( 1 );
 	g.print();
-	g.deleteProduct( 1 );
-	g.print();
+
+	std::cout << _getch();
 
 	return 0;
 }
