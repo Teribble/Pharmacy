@@ -124,10 +124,24 @@ void Warehouse::print()
 	if(!isEmpty())
 	{
 		//system( "cls" );
+		std::cout << "----------------------------------------------------------------------------------------------------" << std::endl;
+		std::cout <<
+			std::left << std::setw( 25 ) << "Наименование:" << "|" <<
+			std::left << std::setw( 25 ) << "Форма выпуска:" << "|" <<
+			std::left << std::setw( 15 ) << "Компания:" << "|" <<
+			std::left << std::setw( 15 ) << "Цена(шт):" << "|" <<
+			std::left << std::setw( 15 ) << "Кол-во:" << "|" << std::endl;
+		std::cout << "----------------------------------------------------------------------------------------------------" << std::endl;
 		for(int i = 0; i < this->counter; i++)
 		{
-			std::cout << i << " " << this->list[ i ].getName() << "\n";
+			std::cout <<
+				std::left << std::setw(25) << this->list[i].getName() << "|" <<
+				std::left << std::setw( 25 ) << this->list[ i ].getForm() << "|" <<
+				std::left << std::setw( 15 ) << this->list[ i ].getCompany() << "|" <<
+				std::left << std::setw( 15 ) << this->list[ i ].getPrice() << "|" <<
+				std::left << std::setw( 15 ) << this->list[ i ].getAmount() <<"|" << std::endl;
 		}
+		std::cout << "----------------------------------------------------------------------------------------------------" << std::endl;
 	}
 	else
 	{

@@ -6,7 +6,7 @@ Product::Product()
 	this->form = "не указана форма выпуска";
 	this->company = "не указана компания";
 	this->price = 0;
-	this->amount = 0;
+	this->amount = 0; 
 }
 
 void Product::setName( const std::string name )

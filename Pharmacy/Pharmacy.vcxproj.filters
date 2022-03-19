@@ -32,5 +32,8 @@
     <ClInclude Include="Warehouse.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="iHelper.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

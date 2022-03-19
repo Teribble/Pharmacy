@@ -1,6 +1,8 @@
 ﻿#pragma once
 #include "Product.h"
 #include <conio.h>
+#include <iomanip>
+#include "iHelper.h"
 
 #pragma region define
 #define one 49

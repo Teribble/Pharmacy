@@ -144,6 +144,7 @@
     <ClCompile Include="Warehouse.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="iHelper.h" />
     <ClInclude Include="Product.h" />
     <ClInclude Include="Warehouse.h" />
   </ItemGroup>
