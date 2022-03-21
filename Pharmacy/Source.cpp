@@ -1,5 +1,10 @@
 ﻿#include "Warehouse.h"
 
+
+/// <summary>
+/// Сделать поиск по полям, фильтрация позиций, сортировка
+/// </summary>
+/// <returns></returns>
 int main()
 {
 	system( "title Аптека твоей мечты" );
@@ -8,7 +13,7 @@ int main()
 	SetConsoleCP( 1251 );
 	SetConsoleOutputCP( 1251 );
 	Product a , b , c;
-	a.setName( "sss" );
+	a.setName( "Hello my name" );
 	a.setForm( "aa" );
 	a.setCompany( "OAO" );
 	a.setPrice( 23.6 );
@@ -25,7 +30,9 @@ int main()
 	g.addNewProduct( c );
 	g.addNewProduct( c );
 	g.addNewProduct( c );
+	g.changeProduct(1);
 	g.print();
+	g.search( "DELETE" );
 	system( "PAUSE" );
 
 	return 0;

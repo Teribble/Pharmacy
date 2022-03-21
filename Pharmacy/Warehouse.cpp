@@ -150,6 +150,31 @@ void Warehouse::print()
 
 }
 
+void Warehouse::search( std::string name )
+{
+	Warehouse buffer;
+	int sizename = name.size();
+	bool flag = false;
+	for(int i = 0; i < this->counter; i++)
+	{
+		flag = false;
+		for(int j = 0; j < sizename; j++)
+		{
+			if(this->list[ i ].getName()[ j ] == name[ j ]) flag = true;
+			else
+			{
+				flag = false;
+				break;
+			}
+		}
+		if(true == flag)
+		{
+			buffer.addNewProduct( this->list[ i ] );
+		}
+	}
+	buffer.print();
+}
+
 bool Warehouse::isEmpty()
 {
 	return 0 == this->counter;
