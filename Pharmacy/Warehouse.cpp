@@ -72,7 +72,7 @@ void Warehouse::deleteProduct( const int position )
 
 void Warehouse::changeProduct( const int position )
 {
-	system( "cls" );
+	//system( "cls" );
 	std::cout <<
 		"1: Изменить имя\n" <<
 		"2: Изменить форму выпуска\n" <<
@@ -124,24 +124,24 @@ void Warehouse::print()
 	if(!isEmpty())
 	{
 		//system( "cls" );
-		std::cout << "----------------------------------------------------------------------------------------------------" << std::endl;
+		std::cout << "------------------------------------------------------------------------------------------------------" << std::endl;
 		std::cout <<
-			std::left << std::setw( 25 ) << "Наименование:" << "|" <<
+			std::left << std::setw( 27 ) << "Наименование:" << "|" <<
 			std::left << std::setw( 25 ) << "Форма выпуска:" << "|" <<
 			std::left << std::setw( 15 ) << "Компания:" << "|" <<
 			std::left << std::setw( 15 ) << "Цена(шт):" << "|" <<
 			std::left << std::setw( 15 ) << "Кол-во:" << "|" << std::endl;
-		std::cout << "----------------------------------------------------------------------------------------------------" << std::endl;
+		std::cout << "------------------------------------------------------------------------------------------------------" << std::endl;
 		for(int i = 0; i < this->counter; i++)
 		{
-			std::cout <<
-				std::left << std::setw(25) << this->list[i].getName() << "|" <<
+			std::cout <<i<<" "<<
+				std::left << std::setw(25) <<this->list[i].getName() << "|" <<
 				std::left << std::setw( 25 ) << this->list[ i ].getForm() << "|" <<
 				std::left << std::setw( 15 ) << this->list[ i ].getCompany() << "|" <<
 				std::left << std::setw( 15 ) << this->list[ i ].getPrice() << "|" <<
 				std::left << std::setw( 15 ) << this->list[ i ].getAmount() <<"|" << std::endl;
 		}
-		std::cout << "----------------------------------------------------------------------------------------------------" << std::endl;
+		std::cout << "------------------------------------------------------------------------------------------------------" << std::endl;
 	}
 	else
 	{
@@ -157,22 +157,74 @@ void Warehouse::search( std::string name )
 	bool flag = false;
 	for(int i = 0; i < this->counter; i++)
 	{
-		flag = false;
-		for(int j = 0; j < sizename; j++)
+		if(this->list[ i ].getName().size() == name.size())
 		{
-			if(this->list[ i ].getName()[ j ] == name[ j ]) flag = true;
-			else
+			flag = false;
+			for(int j = 0; j < sizename; j++)
 			{
-				flag = false;
-				break;
+				if(this->list[ i ].getName()[ j ] == name[ j ]) flag = true;
+				else
+				{
+					flag = false;
+					break;
+				}
+			}
+			if(true == flag)
+			{
+				buffer.addNewProduct( this->list[ i ] );
 			}
 		}
-		if(true == flag)
+		else
 		{
-			buffer.addNewProduct( this->list[ i ] );
+			continue;
 		}
 	}
 	buffer.print();
+	system( "PAUSE" );
+}
+
+void Warehouse::menu()
+{
+	while(!_kbhit())
+	{
+		system( "cls" );
+		Product buffer;
+		int pos = 0;
+		std::string bufferstr = "";
+		std::cout
+			<< "1: Добавить новый продукт\n"
+			<< "2: Удалить продукт\n"
+			<< "3: Изменить продукт\n"
+			<< "4: Поиск продукта по имени\n"
+			<< "ESC: Выход из программы\n";
+		this->print();
+		pos = _getch();
+		//std::cout << pos;
+		switch(pos)
+		{
+			case VK_ONE:
+				this->addNewProduct(buffer.manualInput());
+				break;
+			case VK_THREE:
+				std::cout << "Введите позицию для изменения: ";
+				std::cin >> pos;
+				this->changeProduct( pos );
+				break;
+			case VK_TWO:
+				std::cout << "Введите позицию для удаления: ";
+				std::cin >> pos;
+				this->deleteProduct( pos );
+				break;
+			case VK_FORE:
+				std::cout << "Введите имя: ";
+				std::cin >> bufferstr;
+				this->search( bufferstr );
+				break;
+			case VK_ESCAPE:
+				exit(1);
+				break;
+		}
+	}
 }
 
 bool Warehouse::isEmpty()

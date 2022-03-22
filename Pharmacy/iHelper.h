@@ -4,6 +4,17 @@
 #include <windows.h>
 #include <ctime>
 
+#define VK_NULL 0x30
+#define VK_ONE 0x31
+#define VK_TWO 0x32
+#define VK_THREE 0x33
+#define VK_FORE 0x34
+#define VK_FIVE 0x35
+#define VK_SIX 0x36
+#define VK_SEVEN 0x37
+#define VK_EIGHT 0x38
+#define K_NINE 0x39
+
 namespace iHelper
 {
 #define RESET   "\033[0m"
@@ -28,7 +39,7 @@ namespace iHelper
         DrawMenuBar( hWindowConsole );
     }
 
-    inline void deleteRR()
+    inline void deleteCursor()
     {
         HWND consoleWnd = GetConsoleWindow();
         DWORD consoleStyle = GetWindowLong( consoleWnd , GWL_STYLE );

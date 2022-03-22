@@ -148,6 +148,9 @@
     <ClInclude Include="Product.h" />
     <ClInclude Include="Warehouse.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="newPos.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

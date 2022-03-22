@@ -9,6 +9,9 @@ public:
 	// Конструктор
 	Product();
 
+	// Ручной ввод
+	Product manualInput();
+
 #pragma region setters
 
 	// Задать наименование товара

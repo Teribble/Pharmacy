@@ -9,6 +9,30 @@ Product::Product()
 	this->amount = 0; 
 }
 
+Product Product::manualInput()
+{
+	Product buffer;
+	std::string buffname;
+	float buffprice;
+	int buffamount;
+	std::cout << "Введите наименование продукта: ";
+	std::cin >> buffname;
+	buffer.setName( buffname );
+	std::cout << "Введите форму продукта: ";
+	std::cin >> buffname;
+	buffer.setForm( buffname );
+	std::cout << "Введите компанию продукта: ";
+	std::cin >> buffname;
+	buffer.setCompany( buffname );
+	std::cout << "Введите цену за штуку продукта: ";
+	std::cin >> buffprice;
+	buffer.setPrice( buffprice );
+	std::cout << "Введите кол-во продукта: ";
+	std::cin >> buffamount;
+	buffer.setAmount( buffamount );
+	return buffer;
+}
+
 void Product::setName( const std::string name )
 {
 	this->name = name;
