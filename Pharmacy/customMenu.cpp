@@ -1,4 +1,4 @@
-#include "customMenu.h"
+п»ї#include "customMenu.h"
 
 #pragma warning(disable : 6385)
 
@@ -53,7 +53,7 @@ int customMenu::choiceMenu(int x, int y)
 		pos = _getch();
 		switch(pos)
 		{
-			case VK_ARROW_LEFT://влево 
+			case VK_ARROW_LEFT://РІР»РµРІРѕ 
 				if(direction == 1)
 				{
 					if(choice == 0)
@@ -62,7 +62,7 @@ int customMenu::choiceMenu(int x, int y)
 					break;
 				}
 				else break;
-			case VK_ARROW_RIGHT://вправо
+			case VK_ARROW_RIGHT://РІРїСЂР°РІРѕ
 				if(direction == 1)
 				{
 					if(choice == counter)
@@ -71,7 +71,7 @@ int customMenu::choiceMenu(int x, int y)
 					break;
 				}
 				else break;
-			case VK_ARROW_UP://вверх
+			case VK_ARROW_UP://РІРІРµСЂС…
 				if(direction == 0)
 				{
 					if(choice == 0)
@@ -80,7 +80,7 @@ int customMenu::choiceMenu(int x, int y)
 					break;
 				}
 				else break;
-			case VK_ARROW_DOWN://вниз
+			case VK_ARROW_DOWN://РІРЅРёР·
 				if(direction == 0)
 				{
 					if(choice == counter)

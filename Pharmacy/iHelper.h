@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 
 #include <iostream>
 #include <windows.h>
@@ -53,7 +53,7 @@ namespace iHelper
 #define CYAN    "\033[36m"      /* Cyan */
 #define WHITE   "\033[37m"      /* White */
 
-    // Размер консоли
+    // Р Р°Р·РјРµСЂ РєРѕРЅСЃРѕР»Рё
     inline void SizeConsole( int width , int height )
     {
         HWND hWindowConsole = GetConsoleWindow();
@@ -66,7 +66,7 @@ namespace iHelper
         DrawMenuBar( hWindowConsole );
     }
 
-    //Удалить курсор
+    //РЈРґР°Р»РёС‚СЊ РєСѓСЂСЃРѕСЂ
     inline void ShowConsoleCursor( bool showFlag )
     {
         HANDLE out = GetStdHandle( STD_OUTPUT_HANDLE );
@@ -76,7 +76,7 @@ namespace iHelper
         SetConsoleCursorInfo( out , &cursorInfo );
     }
 
-    // Установить курсор по указанной позиции
+    // РЈСЃС‚Р°РЅРѕРІРёС‚СЊ РєСѓСЂСЃРѕСЂ РїРѕ СѓРєР°Р·Р°РЅРЅРѕР№ РїРѕР·РёС†РёРё
     inline void setCursor( int x , int y )
     {
         HANDLE console = GetStdHandle( STD_OUTPUT_HANDLE );
@@ -84,7 +84,7 @@ namespace iHelper
         SetConsoleCursorPosition( console , cursorPosition );
     }
 
-    // Ввод в консоль строки с пробелом
+    // Р’РІРѕРґ РІ РєРѕРЅСЃРѕР»СЊ СЃС‚СЂРѕРєРё СЃ РїСЂРѕР±РµР»РѕРј
     inline std::string enterString()
     {
         std::string buffer;
@@ -92,7 +92,7 @@ namespace iHelper
         return buffer;
     }
 
-    // Отчистка экрана
+    // РћС‚С‡РёСЃС‚РєР° СЌРєСЂР°РЅР°
     inline void clearScreen()
     {
         for(size_t i = 0; i < 20; i++)
@@ -105,7 +105,7 @@ namespace iHelper
         }
     }
 
-    // Вернет введеную цифру
+    // Р’РµСЂРЅРµС‚ РІРІРµРґРµРЅСѓСЋ С†РёС„СЂСѓ
     inline int getIntDisappearingInscription( std::string str , int x , int y )
     {
         int num;
@@ -124,7 +124,7 @@ namespace iHelper
             }
             iHelper::setCursor( x,y );
             std::cout << str;
-            std::cin.clear(); /*Сбрасываем ошибку*/
+            std::cin.clear(); /*РЎР±СЂР°СЃС‹РІР°РµРј РѕС€РёР±РєСѓ*/
             while(std::cin.get() != '\n') continue;
         }
         iHelper::setCursor( x , y );
@@ -136,7 +136,7 @@ namespace iHelper
         return num;
     }
 
-    // Вернет введенный текст
+    // Р’РµСЂРЅРµС‚ РІРІРµРґРµРЅРЅС‹Р№ С‚РµРєСЃС‚
     inline std::string getStrDisappearingInscription( std::string str , int x , int y )
     {
         iHelper::setCursor( x , y );
@@ -152,7 +152,7 @@ namespace iHelper
         return buffer;
     }
 
-    // Вернет переменую типа флоат
+    // Р’РµСЂРЅРµС‚ РїРµСЂРµРјРµРЅСѓСЋ С‚РёРїР° С„Р»РѕР°С‚
     inline float getFloatDisappearingInscription( std::string str , int x , int y )
     {
         float num;
@@ -182,7 +182,7 @@ namespace iHelper
         return num;
     }
 
-    // Рисует введенное сообщение по координатам
+    // Р РёСЃСѓРµС‚ РІРІРµРґРµРЅРЅРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ РїРѕ РєРѕРѕСЂРґРёРЅР°С‚Р°Рј
     inline void errorMessage( std::string message, int x, int y )
     {
         iHelper::setCursor( x , y );
