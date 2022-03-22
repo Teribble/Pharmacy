@@ -76,33 +76,41 @@ void Warehouse::deleteProduct( const int position )
 
 void Warehouse::changeProduct( const int position )
 {
-	//system( "cls" );
-	customMenu h1;
-	h1.addButtons( "Изменить имя" );
-	h1.addButtons( "Изменить форму выпуска" );
-	h1.addButtons( "Изменить компанию" );
-	h1.addButtons( "Изменить цену" );
-	h1.addButtons( "Изменить кол-во товара на складе" );
-	int choice = h1.choiceMenu( coordThree );
-	switch(choice)
+	if(position >= counter || position < 0)
 	{
-		case NULL:
-			this->list[ position ].setName( iHelper::getStrDisappearingInscription("Введите имя: ", coordEnter));
-			break;
-		case ONE:
-			this->list[ position ].setForm( iHelper::getStrDisappearingInscription( "Введите форму выпуска: " , coordEnter ) );
-			break;
-		case TWO:
-			this->list[ position ].setCompany( iHelper::getStrDisappearingInscription( "Введите название комании: " , coordEnter ) );
-			break;
-		case THREE:
-			this->list[ position ].setPrice( iHelper::getFloatDisappearingInscription("Введите цену за 1 штуку: ", coordEnter));
-			break;
-		case FORE:
-			this->list[ position ].setAmount( iHelper::getIntDisappearingInscription("Введите кол-во поступления позиций: ", coordEnter));
-			break;
+		iHelper::errorMessage( "Нет такой позиции" , coordError );
+		changeProduct( iHelper::getIntDisappearingInscription( "Введите номер позиции: " , coordEnter ) );
 	}
-	h1.deleteMenu( coordThree );
+	else
+	{
+		customMenu h1;
+		h1.addButtons( "Изменить имя" );
+		h1.addButtons( "Изменить форму выпуска" );
+		h1.addButtons( "Изменить компанию" );
+		h1.addButtons( "Изменить цену" );
+		h1.addButtons( "Изменить кол-во товара на складе" );
+		int choice = h1.choiceMenu( coordThree );
+		switch(choice)
+		{
+			case NULL:
+				this->list[ position ].setName( iHelper::getStrDisappearingInscription( "Введите имя: " , coordEnter ) );
+				break;
+			case ONE:
+				this->list[ position ].setForm( iHelper::getStrDisappearingInscription( "Введите форму выпуска: " , coordEnter ) );
+				break;
+			case TWO:
+				this->list[ position ].setCompany( iHelper::getStrDisappearingInscription( "Введите название комании: " , coordEnter ) );
+				break;
+			case THREE:
+				this->list[ position ].setPrice( iHelper::getFloatDisappearingInscription( "Введите цену за 1 штуку: " , coordEnter ) );
+				break;
+			case FORE:
+				this->list[ position ].setAmount( iHelper::getIntDisappearingInscription( "Введите кол-во поступления позиций: " , coordEnter ) );
+				break;
+		}
+		h1.deleteMenu( coordThree );
+	}
+	
 }
 
 int Warehouse::getCounter() const

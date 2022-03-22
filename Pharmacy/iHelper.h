@@ -102,7 +102,7 @@ namespace iHelper
 
     inline int getIntDisappearingInscription( std::string str , int x , int y )
     {
-        float num;
+        int num;
         iHelper::setCursor( x , y );
         std::cout << str;
         while(!( std::cin >> num ))
@@ -146,16 +146,31 @@ namespace iHelper
 
     inline float getFloatDisappearingInscription( std::string str , int x , int y )
     {
-        float buffer;
+        float num;
         iHelper::setCursor( x , y );
         std::cout << str;
-        std::cin >> buffer;
+        while(!( std::cin >> num ))
+        {
+            iHelper::setCursor( coordError );
+            std::cout << Terrible::fg_red << "ERROR" << RESET;
+            Sleep( 500 );
+            iHelper::setCursor( x , y );
+            for(int i = 0; i < NINE * NINE + NINE; i++)
+            {
+
+                std::cout << " ";
+            }
+            iHelper::setCursor( x , y );
+            std::cout << str;
+            std::cin.clear();
+            while(std::cin.get() != '\n') continue;
+        }
         iHelper::setCursor( x , y );
-        for(int i = 0; i < str.size() + NINE + NINE; i++)
+        for(int i = 0; i < str.size() + NINE; i++)
         {
             std::cout << " ";
         }
-        return buffer;
+        return num;
     }
 
     inline void errorMessage( std::string message, int x, int y )
