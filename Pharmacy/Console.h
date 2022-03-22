@@ -12,7 +12,7 @@
 #include <iomanip>
 #include <windows.h>
 
-namespace JadedHoboConsole
+namespace Terrible
 {
     static const WORD bgMask( BACKGROUND_BLUE      | 
                               BACKGROUND_GREEN     | 

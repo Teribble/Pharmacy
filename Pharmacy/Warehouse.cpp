@@ -1,4 +1,6 @@
 ﻿#include "Warehouse.h"
+#include "customMenu.h"
+
 
 Warehouse::Warehouse()
 {
@@ -62,51 +64,59 @@ void Warehouse::deleteProduct( const int position )
 	}
 	else if(this->counter == 0)
 	{
+		iHelper::setCursor( 60 , 0 );
 		std::cout << "Список пуст\n";
 	}
 	else
 	{
+		iHelper::setCursor( 60 , 0 );
 		std::cout << "Некорректный ввод\n";
 	}
 }
 
 void Warehouse::changeProduct( const int position )
 {
+	int x = 60 , y = 0;
 	//system( "cls" );
-	std::cout <<
-		"1: Изменить имя\n" <<
-		"2: Изменить форму выпуска\n" <<
-		"3: Изменить компанию\n" <<
-		"4: Изменить цену\n" <<
-		"5: Изменить кол-во товара на складе\n" << std::endl;
+	customMenu h1;
+	h1.addButtons( "Изменить имя" );
+	h1.addButtons( "Изменить форму выпуска" );
+	h1.addButtons( "Изменить компанию" );
+	h1.addButtons( "Изменить цену" );
+	h1.addButtons( "Изменить кол-во товара на складе" );
 	std::string buffer;
+	std::string name;
 	float price;
 	int amount;
-	int choice;
-	choice = _getch( );
+	int choice = h1.choiceMenu( x , y );
 	switch(choice)
 	{
-		case one:
+		case NULL:
+			iHelper::setCursor( 0 , SIX );
 			std::cout << "Введите имя: ";
-			std::cin >> buffer;
+			getline( std::cin , buffer );
 			this->list[ position ].setName( buffer );
 			break;
-		case two:
+		case ONE:
+			iHelper::setCursor( 0 , SIX );
 			std::cout << "Введите форму выпуска: ";
-			std::cin >> buffer;
+			getline( std::cin , buffer );
 			this->list[ position ].setForm( buffer );
 			break;
-		case three:
+		case TWO:
+			iHelper::setCursor( 0 , SIX );
 			std::cout << "Введите название компании: ";
-			std::cin >> buffer;
+			getline( std::cin , buffer );
 			this->list[ position ].setCompany( buffer );
 			break;
-		case fore:
+		case THREE:
+			iHelper::setCursor( 0 , SIX );
 			std::cout << "Введите цену: ";
 			std::cin >> price;
 			this->list[ position ].setPrice( price );
 			break;
-		case five:
+		case FORE:
+			iHelper::setCursor( 0 , SIX );
 			std::cout << "Введите кол-во товара на складе: ";
 			std::cin >> amount;
 			this->list[ position ].setAmount( amount );
@@ -124,24 +134,26 @@ void Warehouse::print()
 	if(!isEmpty())
 	{
 		//system( "cls" );
-		std::cout << "------------------------------------------------------------------------------------------------------" << std::endl;
-		std::cout <<
-			std::left << std::setw( 27 ) << "Наименование:" << "|" <<
+		std::cout << Terrible::bg_cyan << Terrible::fg_black;
+		std::cout << "--------------------------------------------------------------------------------------------------------" << std::endl;
+		std::cout <<"|"<<
+			std::left << std::setw( 28 ) << "Наименование:" << "|" <<
 			std::left << std::setw( 25 ) << "Форма выпуска:" << "|" <<
 			std::left << std::setw( 15 ) << "Компания:" << "|" <<
 			std::left << std::setw( 15 ) << "Цена(шт):" << "|" <<
 			std::left << std::setw( 15 ) << "Кол-во:" << "|" << std::endl;
-		std::cout << "------------------------------------------------------------------------------------------------------" << std::endl;
+		std::cout << "--------------------------------------------------------------------------------------------------------" << std::endl;
 		for(int i = 0; i < this->counter; i++)
 		{
-			std::cout <<i<<" "<<
+			std::cout <<"|" << i << "> " <<
 				std::left << std::setw(25) <<this->list[i].getName() << "|" <<
 				std::left << std::setw( 25 ) << this->list[ i ].getForm() << "|" <<
 				std::left << std::setw( 15 ) << this->list[ i ].getCompany() << "|" <<
 				std::left << std::setw( 15 ) << this->list[ i ].getPrice() << "|" <<
 				std::left << std::setw( 15 ) << this->list[ i ].getAmount() <<"|" << std::endl;
 		}
-		std::cout << "------------------------------------------------------------------------------------------------------" << std::endl;
+		std::cout << "--------------------------------------------------------------------------------------------------------" << std::endl;
+		std::cout << RESET;
 	}
 	else
 	{
@@ -185,44 +197,54 @@ void Warehouse::search( std::string name )
 
 void Warehouse::menu()
 {
+	
+
 	while(!_kbhit())
 	{
-		system( "cls" );
-		Product buffer;
+		iHelper::setCursor( 0 , 7 );
+		print();
+		customMenu h1;
+		h1.addButtons( "Изменить" );
+		h1.addButtons( "Фильтровать" );
+		h1.addButtons( "Упорядочить" );
+		h1.setDirection( 1 );
+		int hChoice = h1.choiceMenu(0,0);
+		int cChoice = 0;
 		int pos = 0;
-		std::string bufferstr = "";
-		std::cout
-			<< "1: Добавить новый продукт\n"
-			<< "2: Удалить продукт\n"
-			<< "3: Изменить продукт\n"
-			<< "4: Поиск продукта по имени\n"
-			<< "ESC: Выход из программы\n";
-		this->print();
-		pos = _getch();
-		//std::cout << pos;
-		switch(pos)
+		Product p1;
+
+		customMenu c1;
+		c1.addButtons( "Добавить новый продукт" );
+		c1.addButtons( "Удалить продукт" );
+		c1.addButtons( "Изменить продукт" );
+		c1.addButtons( "Шаг назад" );
+		switch(hChoice)
 		{
-			case VK_ONE:
-				this->addNewProduct(buffer.manualInput());
-				break;
-			case VK_THREE:
-				std::cout << "Введите позицию для изменения: ";
-				std::cin >> pos;
-				this->changeProduct( pos );
-				break;
-			case VK_TWO:
-				std::cout << "Введите позицию для удаления: ";
-				std::cin >> pos;
-				this->deleteProduct( pos );
-				break;
-			case VK_FORE:
-				std::cout << "Введите имя: ";
-				std::cin >> bufferstr;
-				this->search( bufferstr );
-				break;
-			case VK_ESCAPE:
-				exit(1);
-				break;
+			case 0:
+				cChoice = c1.choiceMenu(1,1);
+				switch(cChoice)
+				{
+					case 0:
+						addNewProduct( p1.manualInput() );
+						system( "cls" );
+						break;
+					case 1:
+						std::cout << "Введите позицию продукта: ";
+						std::cin >> pos;
+						deleteProduct( pos );
+						system( "cls" );
+						break;
+					case 2:
+						std::cout << "Введите позицию продукта: ";
+						std::cin >> pos;
+						changeProduct( pos );
+						system( "cls" );
+						break;
+					case 3:
+						system( "cls" );
+						break;
+
+				}
 		}
 	}
 }

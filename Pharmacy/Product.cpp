@@ -11,22 +11,28 @@ Product::Product()
 
 Product Product::manualInput()
 {
+	int x = 60 , y = 0;
 	Product buffer;
 	std::string buffname;
 	float buffprice;
 	int buffamount;
+	iHelper::setCursor( x , y++ );
 	std::cout << "Введите наименование продукта: ";
-	std::cin >> buffname;
+	getline( std::cin , buffname );
 	buffer.setName( buffname );
+	iHelper::setCursor( x , y++ );
 	std::cout << "Введите форму продукта: ";
-	std::cin >> buffname;
+	getline( std::cin , buffname );
 	buffer.setForm( buffname );
+	iHelper::setCursor( x , y++ );
 	std::cout << "Введите компанию продукта: ";
-	std::cin >> buffname;
+	getline( std::cin , buffname );
 	buffer.setCompany( buffname );
+	iHelper::setCursor( x , y++ );
 	std::cout << "Введите цену за штуку продукта: ";
 	std::cin >> buffprice;
 	buffer.setPrice( buffprice );
+	iHelper::setCursor( x , y++ );
 	std::cout << "Введите кол-во продукта: ";
 	std::cin >> buffamount;
 	buffer.setAmount( buffamount );

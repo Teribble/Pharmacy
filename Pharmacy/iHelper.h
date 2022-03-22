@@ -3,6 +3,20 @@
 #include <iostream>
 #include <windows.h>
 #include <ctime>
+#include "Console.h"
+#include "StaticTable.h"
+#include <string>
+
+#define NULL 0
+#define ONE 1
+#define TWO 2
+#define THREE 3
+#define FORE 4
+#define FIVE 5
+#define SIX 6
+#define SEVEN 7
+#define EIGHT 8
+#define NINE 9
 
 #define VK_NULL 0x30
 #define VK_ONE 0x31
@@ -13,7 +27,13 @@
 #define VK_SIX 0x36
 #define VK_SEVEN 0x37
 #define VK_EIGHT 0x38
-#define K_NINE 0x39
+#define VK_NINE 0x39
+#define VK_ENTER 13
+
+#define VK_ARROW_UP 72
+#define VK_ARROW_DOWN 80
+#define VK_ARROW_LEFT 75
+#define VK_ARROW_RIGHT 77
 
 namespace iHelper
 {
@@ -46,4 +66,12 @@ namespace iHelper
         consoleStyle &= ~( WS_MAXIMIZEBOX );
         SetWindowLong( consoleWnd , GWL_STYLE , consoleStyle );
     }
+
+    inline void setCursor( int x , int y )
+    {
+        HANDLE console = GetStdHandle( STD_OUTPUT_HANDLE );
+        COORD cursorPosition{ x,y };
+        SetConsoleCursorPosition( console , cursorPosition );
+    }
+
 }
