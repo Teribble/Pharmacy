@@ -122,6 +122,7 @@ void Warehouse::print()
 {
 	if(!isEmpty())
 	{
+		iHelper::setCursor( coordMainTable );
 		//system( "cls" );
 		std::cout << Terrible::bg_gray << Terrible::fg_black;
 		std::cout << "|--------------------------------------------------------------------------------------------------------|" << std::endl;
@@ -143,9 +144,12 @@ void Warehouse::print()
 		}
 		std::cout << "|--------------------------------------------------------------------------------------------------------|" << std::endl;
 		std::cout << RESET;
-		for(int i = 0; i < TEN * TEN + TEN; i++)
+		for(int j = 0; j < 10; j++)
 		{
-			std::cout << " ";
+			for(int i = 0; i < TEN * TEN + TEN; i++)
+			{
+				std::cout << " ";
+			}
 		}
 	}
 	else
@@ -168,11 +172,18 @@ void Warehouse::print()
 				std::left << std::setw( 15 ) << " " << "|" << std::endl;
 		std::cout << "|------------------------------------------------------------------------------------------------------|" << std::endl;
 		std::cout << RESET;
+		for(int j = 0; j < 10; j++)
+		{
+			for(int i = 0; i < TEN * TEN + TEN; i++)
+			{
+				std::cout << " ";
+			}
+		}
 	}
 
 }
 
-void Warehouse::search( std::string name )
+void Warehouse::filterName( std::string name )
 {
 	Warehouse buffer;
 	int sizename = (int)name.size();
@@ -205,33 +216,135 @@ void Warehouse::search( std::string name )
 	system( "PAUSE" );
 }
 
-void Warehouse::menu()
+void Warehouse::filterForm( std::string form )
 {
-	
+	Warehouse buffer;
+	int sizename = ( int )form.size();
+	bool flag = false;
+	for(int i = 0; i < this->counter; i++)
+	{
+		if(this->list[ i ].getForm().size() == form.size())
+		{
+			flag = false;
+			for(int j = 0; j < sizename; j++)
+			{
+				if(this->list[ i ].getForm()[ j ] == form[ j ]) flag = true;
+				else
+				{
+					flag = false;
+					break;
+				}
+			}
+			if(true == flag)
+			{
+				buffer.addNewProduct( this->list[ i ] );
+			}
+		}
+		else
+		{
+			continue;
+		}
+	}
+	buffer.print();
+	system( "PAUSE" );
+}
 
+void Warehouse::filterCompany( std::string company )
+{
+	Warehouse buffer;
+	int sizename = ( int )company.size();
+	bool flag = false;
+	for(int i = 0; i < this->counter; i++)
+	{
+		if(this->list[ i ].getCompany().size() == company.size())
+		{
+			flag = false;
+			for(int j = 0; j < sizename; j++)
+			{
+				if(this->list[ i ].getCompany()[ j ] == company[ j ]) flag = true;
+				else
+				{
+					flag = false;
+					break;
+				}
+			}
+			if(true == flag)
+			{
+				buffer.addNewProduct( this->list[ i ] );
+			}
+		}
+		else
+		{
+			continue;
+		}
+	}
+	buffer.print();
+	system( "PAUSE" );
+}
+
+void Warehouse::filterPrice( float price )
+{
+	Warehouse buffer;
+	for(int i = 0; i < counter; i++)
+	{
+		if(this->list[ i ].getPrice() == price)
+			buffer.addNewProduct( this->list[ i ] );
+		else continue;
+	}
+	buffer.print();
+	system( "PAUSE" );
+}
+
+void Warehouse::filterAmount( int amount )
+{
+	Warehouse buffer;
+	for(int i = 0; i < counter; i++)
+	{
+		if(this->list[ i ].getAmount() == amount)
+			buffer.addNewProduct( this->list[ i ] );
+		else continue;
+	}
+	buffer.print();
+	system( "PAUSE" );
+}
+
+void Warehouse::showWarehouse()
+{
 	while(!_kbhit())
 	{
 		iHelper::setCursor( coordMainTable );
+		Product p1;
 		print();
+
+#pragma region h1
 		customMenu h1;
 		h1.addButtons( "Изменить" );
 		h1.addButtons( "Фильтровать" );
 		h1.addButtons( "Упорядочить" );
 		h1.setDirection( 1 );
 		int hChoice = h1.choiceMenu( coordMenu1 );
-		int cChoice = 0;
-		int pos = 0;
-		Product p1;
-
+#pragma endregion h1
+#pragma region c1
 		customMenu c1;
 		c1.addButtons( "Добавить новый продукт" );
 		c1.addButtons( "Удалить продукт" );
 		c1.addButtons( "Изменить продукт" );
+		int c1Choice;
+#pragma endregion c1
+#pragma region c2
+		customMenu c2;
+		c2.addButtons( "по имени" );
+		c2.addButtons( "по форме выпуска" );
+		c2.addButtons( "по производителю" );
+		c2.addButtons( "по цене" );
+		c2.addButtons( "по кол-ву" );
+		int c2Choice;
+#pragma endregion c2
 		switch(hChoice)
 		{
 			case 0:
-				cChoice = c1.choiceMenu( coordChangeMenu );
-				switch(cChoice)
+				c1Choice = c1.choiceMenu( coordChangeMenu );
+				switch(c1Choice)
 				{
 					case NULL:
 						addNewProduct( p1.manualInput() );
@@ -249,6 +362,36 @@ void Warehouse::menu()
 						c1.deleteMenu( coordChangeMenu );
 						break;
 				}
+				break;
+			case 1:
+				c2Choice = c2.choiceMenu( coordChangeTwoMenu );
+				switch(c2Choice)
+				{
+					case NULL:
+						filterName( iHelper::getStrDisappearingInscription( "Введите наименование для фильтра: " , coordEntered ));
+						c2.deleteMenu( coordChangeTwoMenu );
+						break;
+					case ONE:
+						filterForm( iHelper::getStrDisappearingInscription( "Введите вид формы для фильтра: " , coordEntered ) );
+						c2.deleteMenu( coordChangeTwoMenu );
+						break;
+					case TWO:
+						filterCompany( iHelper::getStrDisappearingInscription( "Введите наименование производства для фильтра: " , coordEntered ) );
+						c2.deleteMenu( coordChangeTwoMenu );
+						break;
+					case THREE:
+						filterPrice( iHelper::getFloatDisappearingInscription( "Введите цену для фильтра: " , coordEntered ) );
+						c2.deleteMenu( coordChangeTwoMenu );
+						break;
+					case FORE:
+						filterAmount( iHelper::getIntDisappearingInscription( "Введите количество товара для фильтра: " , coordEntered ) );
+						c2.deleteMenu( coordChangeTwoMenu );
+						break;
+					case VK_ESCAPE:
+						c2.deleteMenu( coordChangeTwoMenu );
+						break;
+				}
+				break;
 		}
 	}
 }

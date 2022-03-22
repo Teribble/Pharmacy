@@ -15,6 +15,7 @@
 #define coordMainTable 0, 10
 #define coordMenu1 0, 0
 #define coordChangeMenu 1, 1
+#define coordChangeTwoMenu 14, 1
 #define coordEntered 1, 9
 #define coordThree 2, 4
 #define coordError 60, 9
@@ -45,10 +46,23 @@ public:
 	// Вывести список позиций на складе
 	void print();
 
-	// Функция упращает поиск по имени препарата, выводя на экране все совпадения по вводимой позиции
-	void search(std::string name);
+	// Фильтр имени
+	void filterName(std::string name);
 
-	void menu();
+	// Фильтр форм
+	void filterForm(std::string form);
+
+	// Фильтр компаний
+	void filterCompany(std::string company);
+
+	// Фильтр цены
+	void filterPrice(float price);
+
+	// Фильтр количества
+	void filterAmount(int amount);
+
+	// Показать склад
+	void showWarehouse();
 
 private:
 	

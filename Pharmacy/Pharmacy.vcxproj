@@ -142,7 +142,6 @@
     <ClCompile Include="customMenu.cpp" />
     <ClCompile Include="Product.cpp" />
     <ClCompile Include="Source.cpp" />
-    <ClCompile Include="StaticTable.cpp" />
     <ClCompile Include="Warehouse.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -150,7 +149,6 @@
     <ClInclude Include="customMenu.h" />
     <ClInclude Include="iHelper.h" />
     <ClInclude Include="Product.h" />
-    <ClInclude Include="StaticTable.h" />
     <ClInclude Include="Warehouse.h" />
   </ItemGroup>
   <ItemGroup>
