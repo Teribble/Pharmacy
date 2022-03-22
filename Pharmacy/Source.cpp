@@ -25,16 +25,18 @@ int main()
 	b.setAmount( 3333 );
 	c = a;
 	c.setName( "DELETE" );
-	c.setForm( "Arma" );
+	c.setForm( "brma" );
 	c.setCompany( "Talka" );
 	c.setPrice( 3.34f );
 	c.setAmount( 300 );
+	b.setForm( "I" );
 	Warehouse g;
 	g.addNewProduct( a );
-	for(int i = 0; i < 5; i++)
+	for(int i = 0; i < 20; i++)
 	{
 		g.addNewProduct( a );
 		g.addNewProduct( c );
+		g.addNewProduct( b );
 	}
 	//g.changeProduct(1);
 	//g.print();

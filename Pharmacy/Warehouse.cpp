@@ -122,8 +122,8 @@ void Warehouse::print()
 {
 	if(!isEmpty())
 	{
+		system( "cls" );
 		iHelper::setCursor( coordMainTable );
-		//system( "cls" );
 		std::cout << Terrible::bg_gray << Terrible::fg_black;
 		std::cout << "|--------------------------------------------------------------------------------------------------------|" << std::endl;
 		std::cout <<"|"<<
@@ -151,34 +151,29 @@ void Warehouse::print()
 				std::cout << " ";
 			}
 		}
+		iHelper::setCursor( coordMainTable - TWO );
 	}
 	else
 	{
+		system( "cls" );
 		iHelper::setCursor( coordMainTable );
 		std::cout << Terrible::bg_gray << Terrible::fg_black;
 		std::cout << "|--------------------------------------------------------------------------------------------------------|" << std::endl;
 		std::cout << "|" <<
-			std::left << std::setw( 28 ) << Terrible::fg_yellow << "Наименование:" << Terrible::fg_black << "|" <<
+			std::left << std::setw( 30 ) << Terrible::fg_yellow << "Наименование:" << Terrible::fg_black << "|" <<
 			std::left << std::setw( 25 ) << Terrible::fg_yellow << "Форма выпуска:" << Terrible::fg_black << "|" <<
 			std::left << std::setw( 15 ) << Terrible::fg_yellow << "Компания:" << Terrible::fg_black << "|" <<
 			std::left << std::setw( 15 ) << Terrible::fg_yellow << "Цена(шт):" << Terrible::fg_black << "|" <<
 			std::left << std::setw( 15 ) << Terrible::fg_yellow << "Кол-во:" << Terrible::fg_black << "|" << std::endl;
 		std::cout << "|--------------------------------------------------------------------------------------------------------|" << std::endl;
-		std::cout << "|" << std::setw( 3 ) << "> " <<
+		std::cout << "|" << std::setw( 3 ) <<" " << "> " <<
 				std::left << std::setw( 25 ) << "Список пуст" << "|" <<
 				std::left << std::setw( 25 ) << " " << "|" <<
 				std::left << std::setw( 15 ) << " " << "|" <<
 				std::left << std::setw( 15 ) <<" " << "|" <<
 				std::left << std::setw( 15 ) << " " << "|" << std::endl;
-		std::cout << "|------------------------------------------------------------------------------------------------------|" << std::endl;
+		std::cout << "|--------------------------------------------------------------------------------------------------------|" << std::endl;
 		std::cout << RESET;
-		for(int j = 0; j < 10; j++)
-		{
-			for(int i = 0; i < TEN * TEN + TEN; i++)
-			{
-				std::cout << " ";
-			}
-		}
 	}
 
 }
@@ -340,6 +335,16 @@ void Warehouse::showWarehouse()
 		c2.addButtons( "по кол-ву" );
 		int c2Choice;
 #pragma endregion c2
+
+#pragma region c3
+		customMenu c3;
+		c3.addButtons( "по имени" );
+		c3.addButtons( "по форме выпуска" );
+		c3.addButtons( "по производителю" );
+		c3.addButtons( "по цене" );
+		c3.addButtons( "по кол-ву" );
+		int c3Choice;
+#pragma endregion c3
 		switch(hChoice)
 		{
 			case 0:
@@ -392,6 +397,114 @@ void Warehouse::showWarehouse()
 						break;
 				}
 				break;
+			case 2:
+				c3Choice = c3.choiceMenu( coordChangeThreeMenu );
+				switch(c3Choice)
+				{
+					case NULL:
+						sortName();
+						c2.deleteMenu( coordChangeThreeMenu );
+						break;
+					case ONE:
+						sortForm();
+						c2.deleteMenu( coordChangeThreeMenu );
+						break;
+					case TWO:
+						sortCompany();
+						c2.deleteMenu( coordChangeThreeMenu );
+						break;
+					case THREE:
+						sortPrice();
+						c2.deleteMenu( coordChangeThreeMenu );
+						break;
+					case FORE:
+						sortAmount();
+						c2.deleteMenu( coordChangeThreeMenu );
+						break;
+					case VK_ESCAPE:
+						c2.deleteMenu( coordChangeThreeMenu );
+						break;
+				}
+		}
+	}
+}
+
+void Warehouse::sortName() const
+{
+	for(int i = 0; i < counter; i++)
+	{
+		for(int j = i + 1; j < counter; j++)
+		{
+			if(strcmp( this->list[ i ].getName().c_str() , this->list[ j ].getName().c_str()) > 0 )
+			{
+				Product buffer = this->list[ i ];
+				this->list[ i ] = this->list[ j ];
+				this->list[ j ] = buffer;
+			}
+		}
+	}
+}
+
+void Warehouse::sortForm() const
+{
+	for(int i = 0; i < counter; i++)
+	{
+		for(int j = i + 1; j < counter; j++)
+		{
+			if(strcmp( this->list[ i ].getForm().c_str() , this->list[ j ].getForm().c_str() ) > 0)
+			{
+				Product buffer = this->list[ i ];
+				this->list[ i ] = this->list[ j ];
+				this->list[ j ] = buffer;
+			}
+		}
+	}
+}
+
+void Warehouse::sortCompany() const
+{
+	for(int i = 0; i < counter; i++)
+	{
+		for(int j = i + 1; j < counter; j++)
+		{
+			if(strcmp( this->list[ i ].getCompany().c_str() , this->list[ j ].getCompany().c_str() ) > 0)
+			{
+				Product buffer = this->list[ i ];
+				this->list[ i ] = this->list[ j ];
+				this->list[ j ] = buffer;
+			}
+		}
+	}
+}
+
+void Warehouse::sortPrice() const
+{
+	for(int i = 0; i < counter; i++)
+	{
+		for(int j = i + 1; j < counter; j++)
+		{
+			if(this->list[ i ].getPrice() > this->list[ j ].getPrice())
+			{
+				Product buffer = this->list[ i ];
+				this->list[ i ] = this->list[ j ];
+				this->list[ j ] = buffer;
+			}
+		}
+	}
+}
+
+void Warehouse::sortAmount() const
+{
+	for(int i = 0; i < counter; i++)
+	{
+		for(int j = i + 1; j < counter; j++)
+		{
+			if(this->list[ i ].getAmount() > this->list[ j ].getAmount())
+			{
+				Product buffer = this->list[ i ];
+				this->list[ i ] = this->list[ j ];
+				this->list[ j ] = buffer;
+			}
 		}
 	}
 }

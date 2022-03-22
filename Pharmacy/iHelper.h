@@ -53,6 +53,14 @@ namespace iHelper
 #define CYAN    "\033[36m"      /* Cyan */
 #define WHITE   "\033[37m"      /* White */
 
+    inline void setcur( int x , int y )//установка курсора на позицию  x y
+    {
+        COORD coord;
+        coord.X = x;
+        coord.Y = y;
+        SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ) , coord );
+    };
+
     // Размер консоли
     inline void SizeConsole( int width , int height )
     {

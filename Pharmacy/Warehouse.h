@@ -16,6 +16,7 @@
 #define coordMenu1 0, 0
 #define coordChangeMenu 1, 1
 #define coordChangeTwoMenu 14, 1
+#define coordChangeThreeMenu 27, 1
 #define coordEntered 1, 9
 #define coordThree 2, 4
 #define coordError 60, 9
@@ -63,6 +64,19 @@ public:
 
 	// Показать склад
 	void showWarehouse();
+
+	// Соритровка по имени
+	void sortName() const;
+
+	// Сортировка по форме выпуска
+	void sortForm() const;
+
+	// Соритровка по компании
+	void sortCompany() const;
+
+	void sortPrice() const;
+
+	void sortAmount() const;
 
 private:
 	
