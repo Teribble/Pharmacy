@@ -3,6 +3,7 @@
 #include <conio.h>
 #include <iomanip>
 #include "iHelper.h"
+#include "Navigation.h"
 
 #pragma region define
 #define one 49

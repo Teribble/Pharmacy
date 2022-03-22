@@ -310,7 +310,6 @@ void Warehouse::showWarehouse()
 		iHelper::setCursor( coordMainTable );
 		Product p1;
 		print();
-
 #pragma region h1
 		customMenu h1;
 		h1.addButtons( "Изменить" );
