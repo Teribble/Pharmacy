@@ -1,5 +1,7 @@
 #include "customMenu.h"
 
+#pragma warning(disable : 6385)
+
 customMenu::customMenu()
 {
 	this->buttons = nullptr;
@@ -52,27 +54,45 @@ int customMenu::choiceMenu(int x, int y)
 		switch(pos)
 		{
 			case VK_ARROW_LEFT://влево 
-				if(choice == 0)
-					choice = counter;
-				else choice--;
-				break;
+				if(direction == 1)
+				{
+					if(choice == 0)
+						choice = counter;
+					else choice--;
+					break;
+				}
+				else break;
 			case VK_ARROW_RIGHT://вправо
-				if(choice == counter)
-					choice = 0;
-				else choice++;
-				break;
+				if(direction == 1)
+				{
+					if(choice == counter)
+						choice = 0;
+					else choice++;
+					break;
+				}
+				else break;
 			case VK_ARROW_UP://вверх
-				if(choice == 0)
-					choice = counter;
-				else choice--;
-				break;
+				if(direction == 0)
+				{
+					if(choice == 0)
+						choice = counter;
+					else choice--;
+					break;
+				}
+				else break;
 			case VK_ARROW_DOWN://вниз
-				if(choice == counter)
-					choice = 0;
-				else choice++;
-				break;
+				if(direction == 0)
+				{
+					if(choice == counter)
+						choice = 0;
+					else choice++;
+					break;
+				}
+				else break;
 			case VK_ENTER:
 				return choice;
+			case VK_ESCAPE:
+				return VK_ESCAPE;
 		}
 	}
 }
@@ -88,7 +108,7 @@ void customMenu::moveVertically(int x, int y) const
 	{
 		if(this->choice == i)
 		{
-			std::cout << Terrible::bg_cyan << Terrible::fg_black;
+			std::cout << Terrible::bg_green << Terrible::fg_black;
 			iHelper::setCursor( x , y );
 			std::cout <<std::left<< std::setw(maxSizeStr) << std::left << getNameButtons(i) << std::endl;
 			y++;
@@ -110,7 +130,7 @@ void customMenu::moveHorizontally( int x , int y ) const
 	{
 		if(this->choice == i)
 		{
-			std::cout << Terrible::bg_cyan << Terrible::fg_black;
+			std::cout << Terrible::bg_green << Terrible::fg_black;
 			std::cout << std::left <<std::setw( maxSizeStr ) << std::left << getNameButtons( i );
 		}
 		else
@@ -120,6 +140,19 @@ void customMenu::moveHorizontally( int x , int y ) const
 		}
 	}
 	std::cout << Terrible::bg_black << Terrible::fg_white;
+}
+
+void customMenu::deleteMenu(int x, int y)
+{
+	for(int i = 0; i < counter; i++)
+	{
+		iHelper::setCursor( x , y++ );
+		for(int i = 0; i < maxSizeStr; i++)
+		{
+			std::cout << " ";
+		}
+		std::cout << std::endl;
+	}
 }
 
 bool customMenu::isEmpty()

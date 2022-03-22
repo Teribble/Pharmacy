@@ -11,6 +11,13 @@
 #define fore 52
 #define five 53
 #define TEN 10
+
+#define coordMainTable 0, 10
+#define coordMenu1 0, 0
+#define coordChangeMenu 1, 1
+#define coordEntered 1, 9
+#define coordThree 2, 4
+#define coordError 60, 9
 #pragma endregion define
 
 class Warehouse

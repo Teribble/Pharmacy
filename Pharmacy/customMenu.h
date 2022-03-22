@@ -16,11 +16,13 @@ public:
 	int choiceMenu( int x , int y );
 
 	void setDirection( int num );
+	void deleteMenu( int x , int y );
 private:
 
 	void moveVertically( int x , int y ) const;
 
 	void moveHorizontally( int x , int y ) const;
+
 	
 	bool isEmpty();
 

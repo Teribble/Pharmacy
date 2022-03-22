@@ -1,6 +1,7 @@
 ﻿#include "Warehouse.h"
 #include "customMenu.h"
 
+#pragma warning(disable : 6385)
 
 Warehouse::Warehouse()
 {
@@ -40,7 +41,7 @@ void Warehouse::addNewProduct( Product newProduct )
 
 void Warehouse::deleteProduct( const int position )
 {
-	if(!isEmpty() && position >= 0 && position <= this->counter )
+	if(!isEmpty() && position >= 0 && position < this->counter )
 	{
 
 		int newCapasity = this->capasity - 1;
@@ -64,19 +65,17 @@ void Warehouse::deleteProduct( const int position )
 	}
 	else if(this->counter == 0)
 	{
-		iHelper::setCursor( 60 , 0 );
-		std::cout << "Список пуст\n";
+		iHelper::errorMessage( "Список пуст!" , coordError);
 	}
 	else
 	{
-		iHelper::setCursor( 60 , 0 );
-		std::cout << "Некорректный ввод\n";
+		iHelper::errorMessage( "Неккоректный ввод", coordError );
+		deleteProduct( iHelper::getIntDisappearingInscription( "Введите позицию продукта: " , coordEnter ) );
 	}
 }
 
 void Warehouse::changeProduct( const int position )
 {
-	int x = 60 , y = 0;
 	//system( "cls" );
 	customMenu h1;
 	h1.addButtons( "Изменить имя" );
@@ -84,44 +83,26 @@ void Warehouse::changeProduct( const int position )
 	h1.addButtons( "Изменить компанию" );
 	h1.addButtons( "Изменить цену" );
 	h1.addButtons( "Изменить кол-во товара на складе" );
-	std::string buffer;
-	std::string name;
-	float price;
-	int amount;
-	int choice = h1.choiceMenu( x , y );
+	int choice = h1.choiceMenu( coordThree );
 	switch(choice)
 	{
 		case NULL:
-			iHelper::setCursor( 0 , SIX );
-			std::cout << "Введите имя: ";
-			getline( std::cin , buffer );
-			this->list[ position ].setName( buffer );
+			this->list[ position ].setName( iHelper::getStrDisappearingInscription("Введите имя: ", coordEnter));
 			break;
 		case ONE:
-			iHelper::setCursor( 0 , SIX );
-			std::cout << "Введите форму выпуска: ";
-			getline( std::cin , buffer );
-			this->list[ position ].setForm( buffer );
+			this->list[ position ].setForm( iHelper::getStrDisappearingInscription( "Введите форму выпуска: " , coordEnter ) );
 			break;
 		case TWO:
-			iHelper::setCursor( 0 , SIX );
-			std::cout << "Введите название компании: ";
-			getline( std::cin , buffer );
-			this->list[ position ].setCompany( buffer );
+			this->list[ position ].setCompany( iHelper::getStrDisappearingInscription( "Введите название комании: " , coordEnter ) );
 			break;
 		case THREE:
-			iHelper::setCursor( 0 , SIX );
-			std::cout << "Введите цену: ";
-			std::cin >> price;
-			this->list[ position ].setPrice( price );
+			this->list[ position ].setPrice( iHelper::getFloatDisappearingInscription("Введите цену за 1 штуку: ", coordEnter));
 			break;
 		case FORE:
-			iHelper::setCursor( 0 , SIX );
-			std::cout << "Введите кол-во товара на складе: ";
-			std::cin >> amount;
-			this->list[ position ].setAmount( amount );
+			this->list[ position ].setAmount( iHelper::getIntDisappearingInscription("Введите кол-во поступления позиций: ", coordEnter));
 			break;
 	}
+	h1.deleteMenu( coordThree );
 }
 
 int Warehouse::getCounter() const
@@ -134,30 +115,51 @@ void Warehouse::print()
 	if(!isEmpty())
 	{
 		//system( "cls" );
-		std::cout << Terrible::bg_cyan << Terrible::fg_black;
-		std::cout << "--------------------------------------------------------------------------------------------------------" << std::endl;
+		std::cout << Terrible::bg_gray << Terrible::fg_black;
+		std::cout << "|--------------------------------------------------------------------------------------------------------|" << std::endl;
 		std::cout <<"|"<<
-			std::left << std::setw( 28 ) << "Наименование:" << "|" <<
-			std::left << std::setw( 25 ) << "Форма выпуска:" << "|" <<
-			std::left << std::setw( 15 ) << "Компания:" << "|" <<
-			std::left << std::setw( 15 ) << "Цена(шт):" << "|" <<
-			std::left << std::setw( 15 ) << "Кол-во:" << "|" << std::endl;
-		std::cout << "--------------------------------------------------------------------------------------------------------" << std::endl;
+			std::left << std::setw( 30 ) << Terrible::fg_yellow << "Наименование:" <<Terrible::fg_black<< "|" <<
+			std::left << std::setw( 25 ) << Terrible::fg_yellow << "Форма выпуска:" << Terrible::fg_black << "|" <<
+			std::left << std::setw( 15 ) << Terrible::fg_yellow << "Компания:" << Terrible::fg_black << "|" <<
+			std::left << std::setw( 15 ) << Terrible::fg_yellow << "Цена(шт):" << Terrible::fg_black << "|" <<
+			std::left << std::setw( 15 ) << Terrible::fg_yellow << "Кол-во:" << Terrible::fg_black << "|" << std::endl;
+		std::cout << "|--------------------------------------------------------------------------------------------------------|" << std::endl;
 		for(int i = 0; i < this->counter; i++)
 		{
-			std::cout <<"|" << i << "> " <<
+			std::cout <<"|" <<std::setw(3) << i << "> " <<
 				std::left << std::setw(25) <<this->list[i].getName() << "|" <<
 				std::left << std::setw( 25 ) << this->list[ i ].getForm() << "|" <<
 				std::left << std::setw( 15 ) << this->list[ i ].getCompany() << "|" <<
 				std::left << std::setw( 15 ) << this->list[ i ].getPrice() << "|" <<
 				std::left << std::setw( 15 ) << this->list[ i ].getAmount() <<"|" << std::endl;
 		}
-		std::cout << "--------------------------------------------------------------------------------------------------------" << std::endl;
+		std::cout << "|--------------------------------------------------------------------------------------------------------|" << std::endl;
 		std::cout << RESET;
+		for(int i = 0; i < TEN * TEN + TEN; i++)
+		{
+			std::cout << " ";
+		}
 	}
 	else
 	{
-		std::cout << "Список пуст\n";
+		iHelper::setCursor( coordMainTable );
+		std::cout << Terrible::bg_gray << Terrible::fg_black;
+		std::cout << "|--------------------------------------------------------------------------------------------------------|" << std::endl;
+		std::cout << "|" <<
+			std::left << std::setw( 28 ) << Terrible::fg_yellow << "Наименование:" << Terrible::fg_black << "|" <<
+			std::left << std::setw( 25 ) << Terrible::fg_yellow << "Форма выпуска:" << Terrible::fg_black << "|" <<
+			std::left << std::setw( 15 ) << Terrible::fg_yellow << "Компания:" << Terrible::fg_black << "|" <<
+			std::left << std::setw( 15 ) << Terrible::fg_yellow << "Цена(шт):" << Terrible::fg_black << "|" <<
+			std::left << std::setw( 15 ) << Terrible::fg_yellow << "Кол-во:" << Terrible::fg_black << "|" << std::endl;
+		std::cout << "|--------------------------------------------------------------------------------------------------------|" << std::endl;
+		std::cout << "|" << std::setw( 3 ) << "> " <<
+				std::left << std::setw( 25 ) << "Список пуст" << "|" <<
+				std::left << std::setw( 25 ) << " " << "|" <<
+				std::left << std::setw( 15 ) << " " << "|" <<
+				std::left << std::setw( 15 ) <<" " << "|" <<
+				std::left << std::setw( 15 ) << " " << "|" << std::endl;
+		std::cout << "|------------------------------------------------------------------------------------------------------|" << std::endl;
+		std::cout << RESET;
 	}
 
 }
@@ -165,7 +167,7 @@ void Warehouse::print()
 void Warehouse::search( std::string name )
 {
 	Warehouse buffer;
-	int sizename = name.size();
+	int sizename = (int)name.size();
 	bool flag = false;
 	for(int i = 0; i < this->counter; i++)
 	{
@@ -201,14 +203,14 @@ void Warehouse::menu()
 
 	while(!_kbhit())
 	{
-		iHelper::setCursor( 0 , 7 );
+		iHelper::setCursor( coordMainTable );
 		print();
 		customMenu h1;
 		h1.addButtons( "Изменить" );
 		h1.addButtons( "Фильтровать" );
 		h1.addButtons( "Упорядочить" );
 		h1.setDirection( 1 );
-		int hChoice = h1.choiceMenu(0,0);
+		int hChoice = h1.choiceMenu( coordMenu1 );
 		int cChoice = 0;
 		int pos = 0;
 		Product p1;
@@ -217,33 +219,27 @@ void Warehouse::menu()
 		c1.addButtons( "Добавить новый продукт" );
 		c1.addButtons( "Удалить продукт" );
 		c1.addButtons( "Изменить продукт" );
-		c1.addButtons( "Шаг назад" );
 		switch(hChoice)
 		{
 			case 0:
-				cChoice = c1.choiceMenu(1,1);
+				cChoice = c1.choiceMenu( coordChangeMenu );
 				switch(cChoice)
 				{
-					case 0:
+					case NULL:
 						addNewProduct( p1.manualInput() );
-						system( "cls" );
+						c1.deleteMenu( coordChangeMenu );
 						break;
-					case 1:
-						std::cout << "Введите позицию продукта: ";
-						std::cin >> pos;
-						deleteProduct( pos );
-						system( "cls" );
+					case ONE:
+						deleteProduct( iHelper::getIntDisappearingInscription( "Введите позицию продукта: " , coordEnter ));
+						c1.deleteMenu( coordChangeMenu );
 						break;
-					case 2:
-						std::cout << "Введите позицию продукта: ";
-						std::cin >> pos;
-						changeProduct( pos );
-						system( "cls" );
+					case TWO:
+						changeProduct( iHelper::getIntDisappearingInscription( "Введите позицию продукта: ", coordEnter ) );
+						c1.deleteMenu( coordChangeMenu );
 						break;
-					case 3:
-						system( "cls" );
+					case VK_ESCAPE:
+						c1.deleteMenu( coordChangeMenu );
 						break;
-
 				}
 		}
 	}

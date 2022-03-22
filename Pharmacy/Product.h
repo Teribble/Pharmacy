@@ -3,6 +3,8 @@
 #include "iHelper.h"
 #include <string>
 
+#define coordEnter 1, 9
+
 // Товар
 class Product
 {

@@ -10,16 +10,15 @@
 int main()
 {
 	system( "title Аптека твоей мечты" );
-	iHelper::deleteCursor();
-	iHelper::SizeConsole( 870 , 600 );
+	iHelper::SizeConsole( 881 , 600 );
 	setlocale( 0 , "rus" );
 	SetConsoleCP( 1251 );
-	//SetConsoleOutputCP( 1251 );
+	SetConsoleOutputCP( 1251 );
 	Product a , b , c;
 	a.setName( "Hello my name" );
 	a.setForm( "aa" );
 	a.setCompany( "OAO" );
-	a.setPrice( 23.6 );
+	a.setPrice( (float)23.6 );
 	a.setAmount( 3 );
 	b = a;
 	b.setAmount( 3333 );
@@ -27,12 +26,10 @@ int main()
 	c.setName( "DELETE" );
 	Warehouse g;
 	g.addNewProduct( a );
-	g.addNewProduct( a );
-	g.addNewProduct( a );
-	g.addNewProduct( c );
-	g.addNewProduct( c );
-	g.addNewProduct( c );
-	g.addNewProduct( c );
+	for(int i = 0; i < 20; i++)
+	{
+		g.addNewProduct( a );
+	}
 	//g.changeProduct(1);
 	//g.print();
 	//g.search( "d" );

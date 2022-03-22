@@ -6,6 +6,10 @@
 #include "Console.h"
 #include "StaticTable.h"
 #include <string>
+#include<iterator>
+#include<algorithm>
+
+#pragma warning(disable : 4838)
 
 #define NULL 0
 #define ONE 1
@@ -17,6 +21,7 @@
 #define SEVEN 7
 #define EIGHT 8
 #define NINE 9
+#define ESCAPE 27
 
 #define VK_NULL 0x30
 #define VK_ONE 0x31
@@ -34,6 +39,8 @@
 #define VK_ARROW_DOWN 80
 #define VK_ARROW_LEFT 75
 #define VK_ARROW_RIGHT 77
+
+#define coordError 60, 9
 
 namespace iHelper
 {
@@ -72,6 +79,95 @@ namespace iHelper
         HANDLE console = GetStdHandle( STD_OUTPUT_HANDLE );
         COORD cursorPosition{ x,y };
         SetConsoleCursorPosition( console , cursorPosition );
+    }
+
+    inline std::string enterString()
+    {
+        std::string buffer;
+        getline( std::cin , buffer );
+        return buffer;
+    }
+
+    inline void clearScreen()
+    {
+        for(size_t i = 0; i < 20; i++)
+        {
+            for(size_t i = 0; i < 200; i++)
+            {
+                std::cout <<Terrible::bg_black<< " ";
+            }
+            std::cout << std::endl;
+        }
+    }
+
+    inline int getIntDisappearingInscription( std::string str , int x , int y )
+    {
+        float num;
+        iHelper::setCursor( x , y );
+        std::cout << str;
+        while(!( std::cin >> num ))
+        {
+            iHelper::setCursor( coordError );
+            std::cout << Terrible::fg_red << "ERROR" << RESET;
+            Sleep( 500 );
+            iHelper::setCursor( x , y );
+            for(int i = 0; i < NINE * NINE + NINE; i++)
+            {
+                
+                std::cout << " ";
+            }
+            iHelper::setCursor( x,y );
+            std::cout << str;
+            std::cin.clear(); /*—брасываем ошибку*/
+            while(std::cin.get() != '\n') continue;
+        }
+        iHelper::setCursor( x , y );
+        for(int i = 0; i < str.size() + NINE; i++)
+        {
+            std::cout << " ";
+        }
+        return num;
+    }
+
+    inline std::string getStrDisappearingInscription( std::string str , int x , int y )
+    {
+        std::string buffer;
+        iHelper::setCursor( x , y );
+        std::cout << str;
+        std::cin >> buffer;
+        //getline( std::cin , buffer );
+        iHelper::setCursor( x , y );
+        for(int i = 0; i < str.size() + buffer.size(); i++)
+        {
+            std::cout << " ";
+        }
+        return buffer;
+    }
+
+    inline float getFloatDisappearingInscription( std::string str , int x , int y )
+    {
+        float buffer;
+        iHelper::setCursor( x , y );
+        std::cout << str;
+        std::cin >> buffer;
+        iHelper::setCursor( x , y );
+        for(int i = 0; i < str.size() + NINE + NINE; i++)
+        {
+            std::cout << " ";
+        }
+        return buffer;
+    }
+
+    inline void errorMessage( std::string message, int x, int y )
+    {
+        iHelper::setCursor( x , y );
+        std::cout << Terrible::fg_red << message << RESET;
+        Sleep( 800 );
+        iHelper::setCursor( x , y );
+        for(int i = 0; i < message.size(); i++)
+        {
+            std::cout << " ";
+        }
     }
 
 }

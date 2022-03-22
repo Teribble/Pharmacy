@@ -11,31 +11,12 @@ Product::Product()
 
 Product Product::manualInput()
 {
-	int x = 60 , y = 0;
 	Product buffer;
-	std::string buffname;
-	float buffprice;
-	int buffamount;
-	iHelper::setCursor( x , y++ );
-	std::cout << "Введите наименование продукта: ";
-	getline( std::cin , buffname );
-	buffer.setName( buffname );
-	iHelper::setCursor( x , y++ );
-	std::cout << "Введите форму продукта: ";
-	getline( std::cin , buffname );
-	buffer.setForm( buffname );
-	iHelper::setCursor( x , y++ );
-	std::cout << "Введите компанию продукта: ";
-	getline( std::cin , buffname );
-	buffer.setCompany( buffname );
-	iHelper::setCursor( x , y++ );
-	std::cout << "Введите цену за штуку продукта: ";
-	std::cin >> buffprice;
-	buffer.setPrice( buffprice );
-	iHelper::setCursor( x , y++ );
-	std::cout << "Введите кол-во продукта: ";
-	std::cin >> buffamount;
-	buffer.setAmount( buffamount );
+	buffer.setName( iHelper::getStrDisappearingInscription( "Введите наименование продукта: " , coordEnter ));
+	buffer.setForm( iHelper::getStrDisappearingInscription( "Введите форму продукта: " , coordEnter ) );
+	buffer.setCompany( iHelper::getStrDisappearingInscription( "Введите компанию продукта: " , coordEnter ) );
+	buffer.setPrice( iHelper::getFloatDisappearingInscription( "Введите цену за штуку продукта: " , coordEnter ) );
+	buffer.setAmount( iHelper::getIntDisappearingInscription( "Введите кол-во продукта: " , coordEnter ) );
 	return buffer;
 }
 

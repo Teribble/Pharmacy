@@ -4,6 +4,8 @@
 
 #if !defined( CONSOLE_MANIP_H__INCLUDED )
 #define CONSOLE_MANIP_H__INCLUDED
+#pragma warning(disable : 26495)
+
 
 //------------------------------------------------------------------------------
 
