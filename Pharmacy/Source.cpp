@@ -33,7 +33,7 @@ int main()
 		g.addNewProduct( b );
 		g.addNewProduct( b );
 	}
-	//g.showWarehouse();
+	g.showWarehouse();
 	//g.read(PATH);
 	return 0;
 }
