@@ -11,6 +11,11 @@
 #define fore 52
 #define five 53
 #define TEN 10
+#define widthName 30
+#define widthForm 30
+#define widthCompany 30
+#define widthPrice 15
+#define widthAmount 15
 
 #define coordMainTable 0, 10
 #define coordMenu1 0, 0

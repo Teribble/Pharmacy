@@ -127,24 +127,24 @@ void Warehouse::print()
 		system( "cls" );
 		iHelper::setCursor( coordMainTable );
 		std::cout << Terrible::bg_gray << Terrible::fg_black;
-		std::cout << "|--------------------------------------------------------------------------------------------------------|" << std::endl;
-		std::cout <<"|"<<
-			std::left << std::setw( 30 ) << Terrible::fg_yellow << "Наименование:" <<Terrible::fg_black<< "|" <<
-			std::left << std::setw( 25 ) << Terrible::fg_yellow << "Форма выпуска:" << Terrible::fg_black << "|" <<
-			std::left << std::setw( 15 ) << Terrible::fg_yellow << "Компания:" << Terrible::fg_black << "|" <<
-			std::left << std::setw( 15 ) << Terrible::fg_yellow << "Цена(шт):" << Terrible::fg_black << "|" <<
-			std::left << std::setw( 15 ) << Terrible::fg_yellow << "Кол-во:" << Terrible::fg_black << "|" << std::endl;
-		std::cout << "|--------------------------------------------------------------------------------------------------------|" << std::endl;
+		std::cout << "|---------------------------------------------------------------------------------------------------------------------------------|" << std::endl;
+		std::cout <<"|" << std::setw( THREE ) << " " << "  " <<
+			std::left << std::setw( widthName ) << Terrible::fg_yellow << "Наименование:" <<Terrible::fg_black<< "|" <<
+			std::left << std::setw( widthForm ) << Terrible::fg_yellow << "Форма выпуска:" << Terrible::fg_black << "|" <<
+			std::left << std::setw( widthCompany ) << Terrible::fg_yellow << "Компания:" << Terrible::fg_black << "|" <<
+			std::left << std::setw( widthPrice ) << Terrible::fg_yellow << "Цена(шт):" << Terrible::fg_black << "|" <<
+			std::left << std::setw( widthAmount ) << Terrible::fg_yellow << "Кол-во:" << Terrible::fg_black << "|" << std::endl;
+		std::cout << "|---------------------------------------------------------------------------------------------------------------------------------|" << std::endl;
 		for(int i = 0; i < this->counter; i++)
 		{
-			std::cout <<"|" <<std::setw(3) << i << "> " <<
-				std::left << std::setw(25) <<this->list[i].getName() << "|" <<
-				std::left << std::setw( 25 ) << this->list[ i ].getForm() << "|" <<
-				std::left << std::setw( 15 ) << this->list[ i ].getCompany() << "|" <<
-				std::left << std::setw( 15 ) << this->list[ i ].getPrice() << "|" <<
-				std::left << std::setw( 15 ) << this->list[ i ].getAmount() <<"|" << std::endl;
+			std::cout <<"|" <<std::setw(THREE) << i << "> " <<
+				std::left << std::setw( widthName ) <<this->list[i].getName() << "|" <<
+				std::left << std::setw( widthForm ) << this->list[ i ].getForm() << "|" <<
+				std::left << std::setw( widthCompany ) << this->list[ i ].getCompany() << "|" <<
+				std::left << std::setw( widthPrice ) << this->list[ i ].getPrice() << "|" <<
+				std::left << std::setw( widthAmount ) << this->list[ i ].getAmount() <<"|" << std::endl;
 		}
-		std::cout << "|--------------------------------------------------------------------------------------------------------|" << std::endl;
+		std::cout << "|---------------------------------------------------------------------------------------------------------------------------------|" << std::endl;
 		std::cout << RESET;
 		for(int j = 0; j < 10; j++)
 		{
@@ -160,21 +160,21 @@ void Warehouse::print()
 		system( "cls" );
 		iHelper::setCursor( coordMainTable );
 		std::cout << Terrible::bg_gray << Terrible::fg_black;
-		std::cout << "|--------------------------------------------------------------------------------------------------------|" << std::endl;
+		std::cout << "|---------------------------------------------------------------------------------------------------------------------------------|" << std::endl;
 		std::cout << "|" <<
-			std::left << std::setw( 30 ) << Terrible::fg_yellow << "Наименование:" << Terrible::fg_black << "|" <<
-			std::left << std::setw( 25 ) << Terrible::fg_yellow << "Форма выпуска:" << Terrible::fg_black << "|" <<
-			std::left << std::setw( 15 ) << Terrible::fg_yellow << "Компания:" << Terrible::fg_black << "|" <<
-			std::left << std::setw( 15 ) << Terrible::fg_yellow << "Цена(шт):" << Terrible::fg_black << "|" <<
-			std::left << std::setw( 15 ) << Terrible::fg_yellow << "Кол-во:" << Terrible::fg_black << "|" << std::endl;
-		std::cout << "|--------------------------------------------------------------------------------------------------------|" << std::endl;
-		std::cout << "|" << std::setw( 3 ) <<" " << "> " <<
-				std::left << std::setw( 25 ) << "Список пуст" << "|" <<
-				std::left << std::setw( 25 ) << " " << "|" <<
-				std::left << std::setw( 15 ) << " " << "|" <<
-				std::left << std::setw( 15 ) <<" " << "|" <<
-				std::left << std::setw( 15 ) << " " << "|" << std::endl;
-		std::cout << "|--------------------------------------------------------------------------------------------------------|" << std::endl;
+			std::left << std::setw( widthName ) << Terrible::fg_yellow << "Наименование:" << Terrible::fg_black << "|" <<
+			std::left << std::setw( widthForm ) << Terrible::fg_yellow << "Форма выпуска:" << Terrible::fg_black << "|" <<
+			std::left << std::setw( widthCompany ) << Terrible::fg_yellow << "Компания:" << Terrible::fg_black << "|" <<
+			std::left << std::setw( widthPrice ) << Terrible::fg_yellow << "Цена(шт):" << Terrible::fg_black << "|" <<
+			std::left << std::setw( widthAmount ) << Terrible::fg_yellow << "Кол-во:" << Terrible::fg_black << "|" << std::endl;
+		std::cout << "|---------------------------------------------------------------------------------------------------------------------------------|" << std::endl;
+		std::cout << "|" << std::setw( THREE ) <<" " << "> " <<
+				std::left << std::setw( widthName ) << "Список пуст" << "|" <<
+				std::left << std::setw( widthForm ) << " " << "|" <<
+				std::left << std::setw( widthCompany ) << " " << "|" <<
+				std::left << std::setw( widthPrice ) <<" " << "|" <<
+				std::left << std::setw( widthAmount ) << " " << "|" << std::endl;
+		std::cout << "|---------------------------------------------------------------------------------------------------------------------------------|" << std::endl;
 		std::cout << RESET;
 	}
 

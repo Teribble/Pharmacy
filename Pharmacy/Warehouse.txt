@@ -1,205 +1,55 @@
-Hello my name
-aa
-OAO
-23.6
-3
-Hello my name
-I
-OAO
-23.6
-3333
-Hello my name
-I
-OAO
-23.6
-3333
-Hello my name
-I
-OAO
-23.6
-3333
-Hello my name
-I
-OAO
-23.6
-3333
-Hello my name
-I
-OAO
-23.6
-3333
-Hello my name
-I
-OAO
-23.6
-3333
-Hello my name
-I
-OAO
-23.6
-3333
-Hello my name
-I
-OAO
-23.6
-3333
-Hello my name
-I
-OAO
-23.6
-3333
-Hello my name
-I
-OAO
-23.6
-3333
-Hello my name
-I
-OAO
-23.6
-3333
-Hello my name
-I
-OAO
-23.6
-3333
-Hello my name
-I
-OAO
-23.6
-3333
-Hello my name
-I
-OAO
-23.6
-3333
-Hello my name
-I
-OAO
-23.6
-3333
-Hello my name
-I
-OAO
-23.6
-3333
-Hello my name
-I
-OAO
-23.6
-3333
-Hello my name
-I
-OAO
-23.6
-3333
-Hello my name
-I
-OAO
-23.6
-3333
-Hello my name
-I
-OAO
-23.6
-3333
-Hello my name
-I
-OAO
-23.6
-3333
-Hello my name
-I
-OAO
-23.6
-3333
-Hello my name
-I
-OAO
-23.6
-3333
-Hello my name
-I
-OAO
-23.6
-3333
-Hello my name
-I
-OAO
-23.6
-3333
-Hello my name
-I
-OAO
-23.6
-3333
-Hello my name
-I
-OAO
-23.6
-3333
-Hello my name
-I
-OAO
-23.6
-3333
-Hello my name
-I
-OAO
-23.6
-3333
-Hello my name
-I
-OAO
-23.6
-3333
-Hello my name
-I
-OAO
-23.6
-3333
-Hello my name
-I
-OAO
-23.6
-3333
-Hello my name
-I
-OAO
-23.6
-3333
-Hello my name
-I
-OAO
-23.6
-3333
-Hello my name
-I
-OAO
-23.6
-3333
-Hello my name
-I
-OAO
-23.6
-3333
-Hello my name
-I
-OAO
-23.6
-3333
-Hello my name
-I
-OAO
-23.6
-3333
-Hello my name
-I
-OAO
-23.6
-3333
-Hello my name
-I
-OAO
-23.6
-3333
+Бисакодил
+драже
+Фармстандарт-Уфавита
+170.138
+476
+Инсулин
+карамель
+Р-Фарм
+30.2027
+640
+Инсулин
+драже
+Вертекс
+279.609
+1530
+Панкреатин
+порошки
+Фармстандарт-Уфавита
+223.709
+726
+Лоперамид
+суспензия
+Р-Фарм
+158.026
+542
+Марихуанна
+настойка
+Эс-Джи-Биотех
+60.315
+241
+Инсулин
+сироп
+Канонфарма-Продакшн
+253.373
+1259
+Тантумверде
+порошки
+Вертекс
+47.4825
+124
+Панкреатин
+драже
+Фармстандарт-Уфавита
+293.68
+984
+Нафтизин
+карамель
+Р-Фарм
+225.405
+1386
+Панкреатин
+сироп
+Биокад
+95.1295
+161

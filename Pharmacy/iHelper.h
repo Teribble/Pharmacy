@@ -204,4 +204,14 @@ namespace iHelper
         }
     }
 
+    inline float randomFloat( float min , float max )
+    {
+        return ( float )( rand() ) / RAND_MAX * ( max - min ) + min;
+    }
+
+
+    inline int randomInt( int min , int max )
+    {
+        return min + rand()%( max - min + 1 );
+    }
 }
