@@ -1,11 +1,13 @@
 ﻿#include "Warehouse.h"
 #include "customMenu.h"
 
+#define CAPASITY 10
+
 #pragma warning(disable : 6385)
 
 Warehouse::Warehouse()
 {
-	this->capasity = 10;
+	this->capasity = CAPASITY;
 	this->counter = 0;
 	list = new Product[ capasity ];
 }

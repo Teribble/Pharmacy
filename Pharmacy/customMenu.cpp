@@ -30,8 +30,8 @@ void customMenu::addButtons( std::string newButton )
 	buffer[ newSize - 1 ] = " " + newButton + " ";
 	buttons = nullptr;
 	buttons = buffer;
-	if(maxSizeStr + 2 < newButton.size() + 2)
-		maxSizeStr = newButton.size() + 2 ;
+	if(maxSizeStr + TWO < newButton.size() + TWO)
+		maxSizeStr = newButton.size() + TWO;
 	counter++;
 }
 
