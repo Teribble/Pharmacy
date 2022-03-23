@@ -37,6 +37,7 @@ void Warehouse::addNewProduct( Product newProduct )
 		this->capasity = newCapacity;
 		addNewProduct( newProduct );
 	}
+	write( PATH );
 }
 
 void Warehouse::deleteProduct( const int position )
@@ -62,6 +63,7 @@ void Warehouse::deleteProduct( const int position )
 		this->list = buffer;
 		this->capasity = newCapasity;
 		--this->counter;
+		write( PATH );
 	}
 	else if(this->counter == 0)
 	{
@@ -110,7 +112,7 @@ void Warehouse::changeProduct( const int position )
 		}
 		h1.deleteMenu( coordThree );
 	}
-	
+	write( PATH );
 }
 
 int Warehouse::getCounter() const
@@ -508,11 +510,6 @@ void Warehouse::sortAmount() const
 	}
 }
 
-Product* Warehouse::getList()
-{
-	return this->list;
-}
-
 bool Warehouse::isEmpty()
 {
 	return 0 == this->counter;
@@ -521,4 +518,21 @@ bool Warehouse::isEmpty()
 bool Warehouse::isFull()
 {
 	return this->counter == this->capasity;
+}
+
+void Warehouse::write( std::string path )
+{
+	std::ofstream out( path , std::ios_base::out | std::ios_base::trunc );
+	if(out.is_open())
+	{
+		for(int i = 0; i < counter; i++)
+		{
+			out << this->list[i].getName() << std::endl;
+			out << this->list[i].getForm() << std::endl;
+			out << this->list[i].getCompany() << std::endl;
+			out << this->list[i].getPrice() << std::endl;
+			out << this->list[i].getAmount() << std::endl;
+		}
+	}
+	out.close();
 }

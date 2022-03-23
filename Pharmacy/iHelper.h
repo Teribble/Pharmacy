@@ -7,6 +7,7 @@
 #include <string>
 #include <iterator>
 #include <algorithm>
+#include <fstream>
 
 #pragma warning(disable : 4838)
 

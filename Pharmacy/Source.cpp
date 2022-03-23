@@ -1,7 +1,7 @@
 ﻿#include "Warehouse.h"
 #include "iHelper.h"
-#include <fstream>
 #include "customMenu.h"
+#include <cstdlib>
 
 int main()
 {
@@ -30,11 +30,10 @@ int main()
 	g.addNewProduct( a );
 	for(int i = 0; i < 20; i++)
 	{
-		g.addNewProduct( a );
-		g.addNewProduct( c );
+		g.addNewProduct( b );
 		g.addNewProduct( b );
 	}
 	//g.showWarehouse();
-
+	//g.read(PATH);
 	return 0;
 }

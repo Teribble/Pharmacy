@@ -20,6 +20,7 @@
 #define coordEntered 1, 9
 #define coordThree 2, 4
 #define coordError 60, 9
+#define PATH "Warehouse.txt"
 #pragma endregion define
 
 class Warehouse
@@ -78,8 +79,6 @@ public:
 
 	void sortAmount() const;
 
-	Product* getList();
-
 private:
 	
 	// Пустой склад?
@@ -96,6 +95,9 @@ private:
 
 	// "максимальный" размер склада, который сам расширяется при переполнении
 	int capasity;
+
+	void write( std::string path );
+
 
 };
 
