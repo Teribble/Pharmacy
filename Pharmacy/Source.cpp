@@ -2,11 +2,7 @@
 #include "iHelper.h"
 #include <fstream>
 #include "customMenu.h"
-/// <summary>
-/// Сделать поиск по полям, фильтрация позиций, сортировка
-/// </summary>
-/// <returns></returns>
-/// 
+
 int main()
 {
 	system( "title Аптека твоей мечты" );
@@ -38,18 +34,7 @@ int main()
 		g.addNewProduct( c );
 		g.addNewProduct( b );
 	}
-	//g.changeProduct(1);
-	//g.print();
-	//g.search( "d" );
-	//g.print();
-	g.showWarehouse();
-	/*customMenu change;
-	change.addButtons( "Добавить" );
-	change.addButtons( "Удалить" );
-	change.addButtons( "Удалить" );
-	change.addButtons( "Удалить" );
-	change.addButtons( "Изменить" );
-	change.setDirection( 1 );
-	std::cout<<change.choiceMenu(0,0);*/
+	//g.showWarehouse();
+
 	return 0;
 }

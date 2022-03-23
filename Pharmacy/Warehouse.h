@@ -78,6 +78,8 @@ public:
 
 	void sortAmount() const;
 
+	Product* getList();
+
 private:
 	
 	// Пустой склад?

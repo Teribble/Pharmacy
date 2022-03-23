@@ -508,6 +508,11 @@ void Warehouse::sortAmount() const
 	}
 }
 
+Product* Warehouse::getList()
+{
+	return this->list;
+}
+
 bool Warehouse::isEmpty()
 {
 	return 0 == this->counter;
